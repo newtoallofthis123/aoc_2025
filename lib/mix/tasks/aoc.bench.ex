@@ -3,6 +3,12 @@ defmodule Mix.Tasks.Aoc.Bench do
 
   @shortdoc "Benchmark Advent of Code solutions"
 
+  if Code.ensure_loaded?(Benchee) do
+    @benchee_available true
+  else
+    @benchee_available false
+  end
+
   @moduledoc """
   Benchmark multiple solution functions for a given day using Benchee.
 
@@ -71,15 +77,19 @@ defmodule Mix.Tasks.Aoc.Bench do
       "\nBenchmarking Day #{day} with input from priv/inputs/day#{String.pad_leading(Integer.to_string(day), 2, "0")}.txt\n"
     )
 
-    Benchee.run(
-      jobs,
-      time: 5,
-      memory_time: 2,
-      warmup: 2,
-      formatters: [
-        Benchee.Formatters.Console
-      ]
-    )
+    if @benchee_available do
+      Benchee.run(
+        jobs,
+        time: 5,
+        memory_time: 2,
+        warmup: 2,
+        formatters: [
+          Benchee.Formatters.Console
+        ]
+      )
+    else
+      Mix.raise("Benchee is not available. Make sure it's installed with: mix deps.get")
+    end
   end
 
   def run([_day_str]) do

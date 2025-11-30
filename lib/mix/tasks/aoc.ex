@@ -34,12 +34,7 @@ defmodule Mix.Tasks.Aoc do
 
     input = Aoc2025.Input.read!(day)
 
-    part1 = apply(mod, :part1, [input])
-    part2 = apply(mod, :part2, [input])
-
-    IO.puts("Day #{day}")
-    IO.puts("  Part 1: #{part1}")
-    IO.puts("  Part 2: #{part2}")
+    mod.run(input)
   end
 
   defp day_module(day) do

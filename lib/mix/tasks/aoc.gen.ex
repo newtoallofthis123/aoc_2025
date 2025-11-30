@@ -38,7 +38,7 @@ defmodule Mix.Tasks.Aoc.Gen do
 
     # File paths
     solution_path = Path.join("lib", "day#{day_padded}.ex")
-    test_path = Path.join("test", "day_#{day_padded}.exs")
+    test_path = Path.join("test", "day_#{day_padded}_test.exs")
     input_path = Path.join(["priv", "inputs", "day#{day_padded}.txt"])
 
     # Generate solution file
@@ -118,7 +118,7 @@ defmodule Mix.Tasks.Aoc.Gen do
     """
   end
 
-  defp test_template(module_name, day) do
+  defp test_template(module_name, _day) do
     """
     defmodule Aoc2025.#{module_name}Test do
       use ExUnit.Case, async: true
