@@ -28,6 +28,10 @@ defmodule Mix.Tasks.Aoc do
       end
 
     mod = day_module(day)
+
+    # Ensure the module exists
+    Code.ensure_loaded!(mod)
+
     input = Aoc2025.Input.read!(day)
 
     part1 = apply(mod, :part1, [input])
