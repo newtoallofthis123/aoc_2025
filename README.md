@@ -11,6 +11,11 @@ It is a relief that there is no global leaderboard to tempt me, not that I was m
 
 Let AOC this year be actually fun :)
 
+## AI Disclosure
+
+I don't plan on using AI at all in my Advent of Code solving.
+However, the structure of the project and the initial scaffolding is mostly done by claude and gpt 5.1
+
 ## Setup
 
 This is a simple elixir app. Install dependencies:
